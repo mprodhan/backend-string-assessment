@@ -21,11 +21,14 @@ Kenzie Assignment: String2
 # If the string length is less than 3, leave it unchanged.
 # Return the resulting string.
 
-
 def verbing(s):
-    # your code here
-    return
-
+    for letter in s:
+        if len(s) < 3:
+            return s
+        elif s.endswith('ing'):
+            return s + 'ly'
+        else:
+            return s + 'ing'
 
 # E. not_bad
 # Given a string, find the first appearance of the
@@ -36,8 +39,13 @@ def verbing(s):
 # So 'This dinner is not that bad!' yields:
 # This dinner is good!
 def not_bad(s):
-    # your code here
-    return
+    for word in s:
+        word1 = s.find("not")
+        word2 = s.find("bad")
+        if word1 > 0 and word1 < word2:
+            return s[0:word1] + "good" + s[word2+3:]
+        else:
+            return s
 
 
 # F. front_back
@@ -48,8 +56,23 @@ def not_bad(s):
 # Given 2 strings, a and b, return a string of the form
 #  a-front + b-front + a-back + b-back
 def front_back(a, b):
-    # your code here
-    return
+    front_a = ""
+    front_b = ""
+    back_a = ""
+    back_b = ""
+    if len(a)%2 == 0:
+        front_a += a[0:len(a)//2]
+        back_a += a[len(a)//2:]
+    elif len(a)%2 == 1:
+        front_a += a[0:len(a)//2+1]
+        back_a += a[len(a)//2 + 1:]
+    if len(b)%2 == 0:
+        front_b += b[0:len(b)//2]
+        back_b += b[len(b)//2:]
+    elif len(b)%2 == 1:
+        front_b += b[0:len(b)//2+1]
+        back_b += b[len(b)//2 +1:]
+    return ''.join(front_a + front_b + back_a + back_b)
 
 
 # Provided simple test() function used in main() to print
